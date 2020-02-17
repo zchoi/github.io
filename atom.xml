@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zchoi.github.io/github.io</id>
     <title>Waldeinsamkeit</title>
-    <updated>2020-02-17T02:52:09.345Z</updated>
+    <updated>2020-02-17T02:53:38.008Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zchoi.github.io/github.io"/>
     <link rel="self" href="https://zchoi.github.io/github.io/atom.xml"/>
@@ -17,16 +17,17 @@
         </link>
         <updated>2020-02-17T02:10:59.000Z</updated>
         <content type="html"><![CDATA[<!-- more -->
-<p>🙋‍♂<strong>首先可能遇到的问题</strong></p>
+<h2 id="首先可能遇到的问题">首先可能遇到的问题🙋‍♂</h2>
 <pre><code>&quot;重新安装VMware Tools&quot;按钮显示灰色
 </code></pre>
 <figure data-type="image" tabindex="1"><img src="https://zchoi.github.io/github.io/post-images/1581905632349.png" alt="" loading="lazy"></figure>
-<p>💁‍♂<strong>解决办法</strong><br>
-1.关闭虚拟机；<br>
-2.在虚拟机设置分别设置CD/DVD、CD/DVD2和软盘为自动检测三个步骤；<br>
-3.再重启虚拟机，灰色字即点亮。<br>
-<img src="https://zchoi.github.io/github.io/post-images/1581905783155.png" alt="" loading="lazy"><br>
-<img src="https://zchoi.github.io/github.io/post-images/1581905914067.png" alt="" loading="lazy"></p>
+<h2 id="解决办法">解决办法💁‍♂</h2>
+<pre><code>1.关闭虚拟机；
+2.在虚拟机设置分别设置CD/DVD、CD/DVD2和软盘为自动检测三个步骤；
+3.再重启虚拟机，灰色字即点亮。
+![](https://zchoi.github.io/github.io/post-images/1581905783155.png)
+![](https://zchoi.github.io/github.io/post-images/1581905914067.png)
+</code></pre>
 <p><strong>Tips</strong>:如果默认就是自动检测，无法安装VMware Tools，这时候可以把CD/DVD设置成VMware安装目录中的linux.iso</p>
 <!-- more -->
 <h2 id="vmware-tools安装">Vmware Tools安装🌳</h2>
