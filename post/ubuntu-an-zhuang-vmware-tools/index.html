@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>标签列表 | Waldeinsamkeit</title>
+<title>Ubuntu安装VMware Tools | Waldeinsamkeit</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -22,6 +22,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://zchoi.github.io/github.io">Waldeinsamkeit</a></h3>
@@ -78,16 +79,58 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <h2 class="tag-list-title">标签列表</h2>
-          <div class="row tags-container">
+          <article class="article">
+            <h1>Ubuntu安装VMware Tools</h1>
+            <p class="article-meta">
+              2020-02-17
+              
+                <a href="https://zchoi.github.io/github.io/tag/vZe9t3jAQ/" class="badge secondary">
+                  Linux
+                </a>
+              
+            </p>
             
-              <a href="https://zchoi.github.io/github.io/tag/vZe9t3jAQ/" class="badge warning">
-                Linux
-              </a>
-            
-          </div>
+            <div class="post-content">
+              <!-- more -->
+<p>🙋‍♂<strong>首先可能遇到的问题</strong><br>
+“重新安装VMware Tools”按钮显示灰色<br>
+<img src="https://zchoi.github.io/github.io/post-images/1581905632349.png" alt="" loading="lazy"></p>
+<p>💁‍♂<strong>解决办法</strong><br>
+1.关闭虚拟机；<br>
+2.在虚拟机设置分别设置CD/DVD、CD/DVD2和软盘为自动检测三个步骤；<br>
+3.再重启虚拟机，灰色字即点亮。<br>
+<img src="https://zchoi.github.io/github.io/post-images/1581905783155.png" alt="" loading="lazy"><br>
+<img src="https://zchoi.github.io/github.io/post-images/1581905914067.png" alt="" loading="lazy"></p>
+<p><strong>Tips</strong>:如果默认就是自动检测，无法安装VMware Tools，这时候可以把CD/DVD设置成VMware安装目录中的linux.iso</p>
+<!-- more -->
+<h2 id="vmware-tools安装">Vmware Tools安装🌳</h2>
+<pre><code>1.按钮点亮后，点击安装，开启虚拟机，在左侧VMware Tools会看到类似如下文件包&quot;VMwareTools-10.2.5-8068393.tar.gz&quot;
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://zchoi.github.io/github.io/post-images/1581906670194.png" alt="" loading="lazy"></figure>
+<pre><code>2.打开终端，输入命令&quot;tar zxf VMwareTools-10.2.5-8068393.tar.gz&quot;
+
+3.之后会生成文件&quot;vmware-tools-distrib&quot;
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://zchoi.github.io/github.io/post-images/1581906714145.png" alt="" loading="lazy"></figure>
+<pre><code>4.&quot;cd vmware-tools-distrib&quot;
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://zchoi.github.io/github.io/post-images/1581907318102.png" alt="" loading="lazy"></figure>
+<pre><code>5.&quot;sudo ./vmware-install.pl&quot;
+</code></pre>
+<figure data-type="image" tabindex="4"><img src="https://zchoi.github.io/github.io/post-images/20181107000903442.png" alt="" loading="lazy"></figure>
+<pre><code>6.一路next，遇到y/n输入选项，输入y，回车。出现如下命令意味着VMware Tools安装成功。
+</code></pre>
+<figure data-type="image" tabindex="5"><img src="https://zchoi.github.io/github.io/post-images/1581906934402.png" alt="" loading="lazy"></figure>
+
+            </div>
+          </article>
         </div>
+        <div class="paper" data-aos="fade-in">
+          
+        </div>
+        
       </div>
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://zchoi.github.io/github.io/images/avatar.png?v=1581907684664" class="no-responsive avatar">
@@ -150,7 +193,8 @@
     Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
   </div>
 </div>
-  
+
+
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
