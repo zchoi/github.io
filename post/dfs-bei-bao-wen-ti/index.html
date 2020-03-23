@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Ubuntu安装VMware Tools | Waldeinsamkeit</title>
+<title>DFS背包问题 | Waldeinsamkeit</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -80,49 +80,55 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>Ubuntu安装VMware Tools</h1>
+            <h1>DFS背包问题</h1>
             <p class="article-meta">
-              2020-02-17
-              
-                <a href="https://zchoi.github.io/github.io/tag/vZe9t3jAQ/" class="badge secondary">
-                  Linux
-                </a>
+              2020-03-23
               
             </p>
             
             <div class="post-content">
-              <!-- more -->
-<h2 id="首先可能遇到的问题">首先可能遇到的问题🙋‍♂</h2>
-<pre><code>&quot;重新安装VMware Tools&quot;按钮显示灰色
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://zchoi.github.io/github.io/post-images/1581905632349.png" alt="" loading="lazy"></figure>
-<h2 id="解决办法">解决办法💁‍♂</h2>
-<pre><code>1.关闭虚拟机；
-2.在虚拟机设置分别设置CD/DVD、CD/DVD2和软盘为自动检测三个步骤；
-3.再重启虚拟机，灰色字即点亮。
-</code></pre>
-<p><img src="https://zchoi.github.io/github.io/post-images/1581905783155.png" alt="" loading="lazy"><br>
-<img src="https://zchoi.github.io/github.io/post-images/1581905914067.png" alt="" loading="lazy"></p>
-<p><strong>Tips</strong>:如果默认就是自动检测，无法安装VMware Tools，这时候可以把CD/DVD设置成VMware安装目录中的linux.iso</p>
+              <p><strong>现要将一个背包装若干物品，每个物品都有相应的价值，问在不超过背包容量V的情况下，怎样装物品，使背包价值最大？</strong><br>
+背包容量：V<br>
+物品:things[n]<br>
+重量：weight[n]<br>
+价值：value[n]</p>
 <!-- more -->
-<h2 id="vmware-tools安装">Vmware Tools安装🌳</h2>
-<pre><code>1.按钮点亮后，点击安装，开启虚拟机，在左侧VMware Tools会看到类似如下文件包&quot;VMwareTools-10.2.5-8068393.tar.gz&quot;
-</code></pre>
-<figure data-type="image" tabindex="2"><img src="https://zchoi.github.io/github.io/post-images/1581906670194.png" alt="" loading="lazy"></figure>
-<pre><code>2.打开终端，输入命令&quot;tar zxf VMwareTools-10.2.5-8068393.tar.gz&quot;
+<p>答：用到了DFS。面对物品index（1&lt;=index&lt;=n)，可以不装，也可以装。递归边界：背包装到了最后一件index=n,若没有超过最大容量且当前价值大于max_value，则更新max_value,并返回。</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+using namespace std;
 
-3.之后会生成文件&quot;vmware-tools-distrib&quot;
+void DFS(int,int ,int);
+int n, V, maxValue=0; //物品件数，背包容量，最大价值maxvalue;
+const int maxn=30;
+int weight[maxn],value[maxn];
+int main(){
+	printf(&quot;input the capacity of bags and  number of things:&quot;);
+	scanf(&quot;%d %d&quot;,&amp;V,&amp;n);
+	printf(&quot;input the weight of each thing one by one:\n&quot;);
+	for(int i=0;i&lt;n;i++){
+		scanf(&quot;%d&quot;,&amp;weight[i]);
+	}
+	printf(&quot;and input value of each thing:\n&quot;);
+	for(int i=0;i&lt;n;i++){
+		scanf(&quot;%d&quot;,&amp;value[i]);
+	}
+	DFS(0,0,0);
+	printf(&quot;max value of bags:%d\n&quot;,maxValue);
+
+}
+void DFS(int index,int sum,int sumc){
+	if(index==n){
+		if(sum&lt;=V&amp;&amp;sumc&gt;maxValue){
+			maxValue=sumc;
+		}
+		return;
+	}
+	DFS(index+1,sum+weight[index],sumc+value[index]);
+	DFS(index+1,sum,sumc);
+} 
 </code></pre>
-<figure data-type="image" tabindex="3"><img src="https://zchoi.github.io/github.io/post-images/1581906714145.png" alt="" loading="lazy"></figure>
-<pre><code>4.&quot;cd vmware-tools-distrib&quot;
-</code></pre>
-<figure data-type="image" tabindex="4"><img src="https://zchoi.github.io/github.io/post-images/1581907318102.png" alt="" loading="lazy"></figure>
-<pre><code>5.&quot;sudo ./vmware-install.pl&quot;
-</code></pre>
-<figure data-type="image" tabindex="5"><img src="https://zchoi.github.io/github.io/post-images/20181107000903442.png" alt="" loading="lazy"></figure>
-<pre><code>6.一路next，遇到y/n输入选项，输入y，回车。出现如下命令意味着VMware Tools安装成功。
-</code></pre>
-<figure data-type="image" tabindex="6"><img src="https://zchoi.github.io/github.io/post-images/1581906934402.png" alt="" loading="lazy"></figure>
 
             </div>
           </article>
@@ -133,9 +139,9 @@
               <div class="next">
                 下一篇
               </div>
-              <a href="https://zchoi.github.io/github.io/post/hello-gridea/">
+              <a href="https://zchoi.github.io/github.io/post/Ubuntu安装VMware Tools/">
                 <h3 class="post-title">
-                  Hello Gridea
+                  Ubuntu安装VMware Tools
                 </h3>
               </a>
             </div>
@@ -202,11 +208,11 @@
     </div>
     <div class="row">
       
-        <a href="https://zchoi.github.io/github.io/tag/vZe9t3jAQ/" class="badge warning">
+        <a href="https://zchoi.github.io/github.io/tag/vZe9t3jAQ/" class="badge secondary">
           Linux
         </a>
       
-        <a href="https://zchoi.github.io/github.io/tag/gridea/" class="badge secondary">
+        <a href="https://zchoi.github.io/github.io/tag/gridea/" class="badge warning">
           Gridea
         </a>
       

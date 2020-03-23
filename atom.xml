@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zchoi.github.io/github.io</id>
     <title>Waldeinsamkeit</title>
-    <updated>2020-02-17T02:54:43.559Z</updated>
+    <updated>2020-03-23T14:13:36.050Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zchoi.github.io/github.io"/>
     <link rel="self" href="https://zchoi.github.io/github.io/atom.xml"/>
@@ -10,6 +10,62 @@
     <logo>https://zchoi.github.io/github.io/images/avatar.png</logo>
     <icon>https://zchoi.github.io/github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Waldeinsamkeit</rights>
+    <entry>
+        <title type="html"><![CDATA[DFS背包问题]]></title>
+        <id>https://zchoi.github.io/github.io/post/dfs-bei-bao-wen-ti/</id>
+        <link href="https://zchoi.github.io/github.io/post/dfs-bei-bao-wen-ti/">
+        </link>
+        <updated>2020-03-23T13:56:07.000Z</updated>
+        <summary type="html"><![CDATA[<p><strong>现要将一个背包装若干物品，每个物品都有相应的价值，问在不超过背包容量V的情况下，怎样装物品，使背包价值最大？</strong><br>
+背包容量：V<br>
+物品:things[n]<br>
+重量：weight[n]<br>
+价值：value[n]</p>
+]]></summary>
+        <content type="html"><![CDATA[<p><strong>现要将一个背包装若干物品，每个物品都有相应的价值，问在不超过背包容量V的情况下，怎样装物品，使背包价值最大？</strong><br>
+背包容量：V<br>
+物品:things[n]<br>
+重量：weight[n]<br>
+价值：value[n]</p>
+<!-- more -->
+<p>答：用到了DFS。面对物品index（1&lt;=index&lt;=n)，可以不装，也可以装。递归边界：背包装到了最后一件index=n,若没有超过最大容量且当前价值大于max_value，则更新max_value,并返回。</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+using namespace std;
+
+void DFS(int,int ,int);
+int n, V, maxValue=0; //物品件数，背包容量，最大价值maxvalue;
+const int maxn=30;
+int weight[maxn],value[maxn];
+int main(){
+	printf(&quot;input the capacity of bags and  number of things:&quot;);
+	scanf(&quot;%d %d&quot;,&amp;V,&amp;n);
+	printf(&quot;input the weight of each thing one by one:\n&quot;);
+	for(int i=0;i&lt;n;i++){
+		scanf(&quot;%d&quot;,&amp;weight[i]);
+	}
+	printf(&quot;and input value of each thing:\n&quot;);
+	for(int i=0;i&lt;n;i++){
+		scanf(&quot;%d&quot;,&amp;value[i]);
+	}
+	DFS(0,0,0);
+	printf(&quot;max value of bags:%d\n&quot;,maxValue);
+
+}
+void DFS(int index,int sum,int sumc){
+	if(index==n){
+		if(sum&lt;=V&amp;&amp;sumc&gt;maxValue){
+			maxValue=sumc;
+		}
+		return;
+	}
+	DFS(index+1,sum+weight[index],sumc+value[index]);
+	DFS(index+1,sum,sumc);
+} 
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Ubuntu安装VMware Tools]]></title>
         <id>https://zchoi.github.io/github.io/post/Ubuntu安装VMware Tools/</id>
