@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zchoi.github.io/github.io</id>
     <title>Waldeinsamkeit</title>
-    <updated>2020-03-23T14:13:36.050Z</updated>
+    <updated>2020-03-23T14:19:02.430Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zchoi.github.io/github.io"/>
     <link rel="self" href="https://zchoi.github.io/github.io/atom.xml"/>
@@ -10,6 +10,35 @@
     <logo>https://zchoi.github.io/github.io/images/avatar.png</logo>
     <icon>https://zchoi.github.io/github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Waldeinsamkeit</rights>
+    <entry>
+        <title type="html"><![CDATA[先序+中序建立二叉树]]></title>
+        <id>https://zchoi.github.io/github.io/post/xian-xu-zhong-xu-jian-li-er-cha-shu/</id>
+        <link href="https://zchoi.github.io/github.io/post/xian-xu-zhong-xu-jian-li-er-cha-shu/">
+        </link>
+        <updated>2020-03-23T14:13:57.000Z</updated>
+        <content type="html"><![CDATA[<p>以递归的思想：</p>
+<pre><code>node *create(int preL,int preR,int inL,int inR){   //先中序的节点序列
+	if(preL&gt;preR){  
+		return NULL;
+	}
+	node *root=(node *)malloc(sizeof(struct node));    //首先创建根节点
+	root-&gt;val=pre[preL];                         //根节点的值是先序的第一个节点
+	int k;          
+	for(k=inL;k&lt;=inR;k++){
+		if(in[k]==pre[preL])  //找到中序的根节点位置
+			break;
+	}
+	int numLeft=k-inL;
+        //递归左子树，找左子树的根节点在先序和中序中的位置
+	root-&gt;lchild=create(preL+1,preL+numLeft,inL,k-1); 
+        //递归右子树
+	root-&gt;rchild=create(preL+numLeft+1,preR,k,inR);
+	return root;
+}
+</code></pre>
+<p>Tip：后序和中序构建二叉树一样，只不过注意根节点是后序的最后一个元素</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[DFS背包问题]]></title>
         <id>https://zchoi.github.io/github.io/post/dfs-bei-bao-wen-ti/</id>

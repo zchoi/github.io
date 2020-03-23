@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>文章归档 | Waldeinsamkeit</title>
+<title>先序+中序建立二叉树 | Waldeinsamkeit</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -22,6 +22,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://zchoi.github.io/github.io">Waldeinsamkeit</a></h3>
@@ -75,77 +76,59 @@
   </div>
 </nav>
 
-    
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          
+          <article class="article">
+            <h1>先序+中序建立二叉树</h1>
+            <p class="article-meta">
+              2020-03-23
+              
+            </p>
+            
+            <div class="post-content">
+              <p>以递归的思想：</p>
+<pre><code>node *create(int preL,int preR,int inL,int inR){   //先中序的节点序列
+	if(preL&gt;preR){  
+		return NULL;
+	}
+	node *root=(node *)malloc(sizeof(struct node));    //首先创建根节点
+	root-&gt;val=pre[preL];                         //根节点的值是先序的第一个节点
+	int k;          
+	for(k=inL;k&lt;=inR;k++){
+		if(in[k]==pre[preL])  //找到中序的根节点位置
+			break;
+	}
+	int numLeft=k-inL;
+        //递归左子树，找左子树的根节点在先序和中序中的位置
+	root-&gt;lchild=create(preL+1,preL+numLeft,inL,k-1); 
+        //递归右子树
+	root-&gt;rchild=create(preL+numLeft+1,preR,k,inR);
+	return root;
+}
+</code></pre>
+<p>Tip：后序和中序构建二叉树一样，只不过注意根节点是后序的最后一个元素</p>
 
-          <h2 class="archives-title">文章归档</h2>
-          <div class="archives-container">
-            
-              <h3 class="year" data-aos-delay="500">2020</h3>
-              
-                
-                  <article class="post">
-                    <a href="https://zchoi.github.io/github.io/post/xian-xu-zhong-xu-jian-li-er-cha-shu/">
-                      <h4 class="post-title">
-                        先序+中序建立二叉树
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://zchoi.github.io/github.io/post/dfs-bei-bao-wen-ti/">
-                      <h4 class="post-title">
-                        DFS背包问题
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://zchoi.github.io/github.io/post/Ubuntu安装VMware Tools/">
-                      <h4 class="post-title">
-                        Ubuntu安装VMware Tools
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-                
-              
-            
-              <h3 class="year" data-aos-delay="500">2018</h3>
-              
-                
-              
-                
-              
-                
-              
-                
-                  <article class="post">
-                    <a href="https://zchoi.github.io/github.io/post/hello-gridea/">
-                      <h4 class="post-title">
-                        Hello Gridea
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-            
-          </div>
+            </div>
+          </article>
         </div>
-        <div class="row flex-edges">
-  
-  
-</div>
-
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://zchoi.github.io/github.io/post/dfs-bei-bao-wen-ti/">
+                <h3 class="post-title">
+                  DFS背包问题
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
       </div>
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://zchoi.github.io/github.io/images/avatar.png?v=1584973138396" class="no-responsive avatar">
@@ -210,11 +193,11 @@
     </div>
     <div class="row">
       
-        <a href="https://zchoi.github.io/github.io/tag/vZe9t3jAQ/" class="badge warning">
+        <a href="https://zchoi.github.io/github.io/tag/vZe9t3jAQ/" class="badge secondary">
           Linux
         </a>
       
-        <a href="https://zchoi.github.io/github.io/tag/gridea/" class="badge warning">
+        <a href="https://zchoi.github.io/github.io/tag/gridea/" class="badge ">
           Gridea
         </a>
       
@@ -225,6 +208,8 @@
   </div>
 </div>
 
+
+    </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
